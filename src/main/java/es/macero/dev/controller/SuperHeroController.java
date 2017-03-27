@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
@@ -32,7 +31,7 @@ public final class SuperHeroController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void addNewSuperHero(@RequestBody @Valid SuperHero superHero) {
+    public void addNewSuperHero(@RequestBody SuperHero superHero) {
         superHeroRepository.saveSuperHero(superHero);
     }
 
