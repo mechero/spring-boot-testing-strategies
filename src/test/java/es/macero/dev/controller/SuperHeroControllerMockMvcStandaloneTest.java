@@ -143,7 +143,6 @@ public class SuperHeroControllerMockMvcStandaloneTest {
     @Test
     public void headerIsPresent() throws Exception {
         // when
-        // when
         MockHttpServletResponse response = mvc.perform(
                 get("/superheroes/2")
                         .accept(MediaType.APPLICATION_JSON))
