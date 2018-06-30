@@ -1,4 +1,4 @@
-package es.macero.dev.controller;
+package io.tpd.superheroes.controller;
 
 import org.springframework.stereotype.Component;
 

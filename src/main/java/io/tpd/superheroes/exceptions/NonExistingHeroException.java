@@ -1,4 +1,4 @@
-package es.macero.dev.exceptions;
+package io.tpd.superheroes.exceptions;
 
 /**
  * This exception is thrown when the SuperHero can't be found in the application if searching by ID.

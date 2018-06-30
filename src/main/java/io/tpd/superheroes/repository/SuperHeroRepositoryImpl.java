@@ -1,7 +1,7 @@
-package es.macero.dev.repository;
+package io.tpd.superheroes.repository;
 
-import es.macero.dev.domain.SuperHero;
-import es.macero.dev.exceptions.NonExistingHeroException;
+import io.tpd.superheroes.domain.SuperHero;
+import io.tpd.superheroes.exceptions.NonExistingHeroException;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
