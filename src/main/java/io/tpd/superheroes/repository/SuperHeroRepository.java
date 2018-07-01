@@ -1,6 +1,6 @@
-package es.macero.dev.repository;
+package io.tpd.superheroes.repository;
 
-import es.macero.dev.domain.SuperHero;
+import io.tpd.superheroes.domain.SuperHero;
 
 import java.util.Optional;
 
@@ -12,7 +12,7 @@ public interface SuperHeroRepository {
 
     /**
      * Retrieves a super hero by the id.
-     * If the id does not exist, a {@link es.macero.dev.exceptions.NonExistingHeroException} will be thrown.
+     * If the id does not exist, a {@link io.tpd.superheroes.exceptions.NonExistingHeroException} will be thrown.
      *
      * @param id the unique id of the super hero
      * @return the SuperHero details

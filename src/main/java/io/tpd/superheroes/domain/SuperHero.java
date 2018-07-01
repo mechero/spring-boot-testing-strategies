@@ -1,4 +1,4 @@
-package es.macero.dev.domain;
+package io.tpd.superheroes.domain;
 
 public final class SuperHero {
 

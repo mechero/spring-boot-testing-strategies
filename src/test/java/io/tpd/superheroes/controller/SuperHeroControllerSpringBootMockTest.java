@@ -1,21 +1,22 @@
-package es.macero.dev.controller;
+package io.tpd.superheroes.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import es.macero.dev.domain.SuperHero;
-import es.macero.dev.exceptions.NonExistingHeroException;
-import es.macero.dev.repository.SuperHeroRepository;
+import io.tpd.superheroes.domain.SuperHero;
+import io.tpd.superheroes.exceptions.NonExistingHeroException;
+import io.tpd.superheroes.repository.SuperHeroRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.json.JacksonTester;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Optional;
 
@@ -25,35 +26,29 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 /**
- * This class demonstrates how to test a controller using MockMVC with Standalone setup.
+ * This class demonstrates how to test a controller using Spring Boot Test
+ * with a MOCK web environment, which makes it similar to just using @WebMvcTest
  *
  * @author moises.macero
  */
-@RunWith(MockitoJUnitRunner.class)
-public class SuperHeroControllerMockMvcStandaloneTest {
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@AutoConfigureMockMvc
+public class SuperHeroControllerSpringBootMockTest {
 
+    @Autowired
     private MockMvc mvc;
 
-    @Mock
+    @MockBean
     private SuperHeroRepository superHeroRepository;
-
-    @InjectMocks
-    private SuperHeroController superHeroController;
 
     // This object will be magically initialized by the initFields method below.
     private JacksonTester<SuperHero> jsonSuperHero;
 
     @Before
     public void setup() {
-        // We would need this line if we would not use MockitoJUnitRunner
-        // MockitoAnnotations.initMocks(this);
         // Initializes the JacksonTester
         JacksonTester.initFields(this, new ObjectMapper());
-        // MockMvc standalone approach
-        mvc = MockMvcBuilders.standaloneSetup(superHeroController)
-                .setControllerAdvice(new SuperHeroExceptionHandler())
-                .addFilters(new SuperHeroFilter())
-                .build();
     }
 
     @Test

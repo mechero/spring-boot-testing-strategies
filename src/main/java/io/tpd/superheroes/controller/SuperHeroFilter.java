@@ -1,4 +1,4 @@
-package es.macero.dev.controller;
+package io.tpd.superheroes.controller;
 
 import org.springframework.stereotype.Component;
 
@@ -13,11 +13,11 @@ import java.io.IOException;
 public class SuperHeroFilter implements Filter {
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {}
+    public void init(FilterConfig filterConfig) {}
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
+        var httpServletResponse = (HttpServletResponse) servletResponse;
         httpServletResponse.setHeader("X-SUPERHERO-APP", "super-header");
         filterChain.doFilter(servletRequest, servletResponse);
     }

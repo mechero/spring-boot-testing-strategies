@@ -1,6 +1,6 @@
-package es.macero.dev.controller;
+package io.tpd.superheroes.controller;
 
-import es.macero.dev.exceptions.NonExistingHeroException;
+import io.tpd.superheroes.exceptions.NonExistingHeroException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;

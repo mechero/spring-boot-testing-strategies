@@ -1,8 +1,8 @@
-package es.macero.dev.controller;
+package io.tpd.superheroes.controller;
 
-import es.macero.dev.domain.SuperHero;
-import es.macero.dev.exceptions.NonExistingHeroException;
-import es.macero.dev.repository.SuperHeroRepository;
+import io.tpd.superheroes.domain.SuperHero;
+import io.tpd.superheroes.exceptions.NonExistingHeroException;
+import io.tpd.superheroes.repository.SuperHeroRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
