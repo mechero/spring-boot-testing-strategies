@@ -4,12 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.tpd.superheroes.domain.SuperHero;
 import io.tpd.superheroes.exceptions.NonExistingHeroException;
 import io.tpd.superheroes.repository.SuperHeroRepository;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  *
  * @author moises.macero
  */
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class SuperHeroControllerMockMvcStandaloneTest {
 
     private MockMvc mvc;
@@ -43,11 +43,11 @@ public class SuperHeroControllerMockMvcStandaloneTest {
     // This object will be magically initialized by the initFields method below.
     private JacksonTester<SuperHero> jsonSuperHero;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        // We would need this line if we would not use MockitoJUnitRunner
+        // We would need this line if we would not use the MockitoExtension
         // MockitoAnnotations.initMocks(this);
-        // Initializes the JacksonTester
+        // Here we can't use @AutoConfigureJsonTesters because there isn't a Spring context
         JacksonTester.initFields(this, new ObjectMapper());
         // MockMvc standalone approach
         mvc = MockMvcBuilders.standaloneSetup(superHeroController)
