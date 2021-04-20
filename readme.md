@@ -30,3 +30,6 @@ Finally, `SuperHeroControllerSpringBootTest` shows how to write a `@SpringBootTe
 ![@SpringBootTest using context and web server](images/tests_springboot_wm.png)
 
 To check conclusion and more information please visit [the blog](https://thepracticaldeveloper.com/2017/07/31/guide-spring-boot-controller-tests/).
+
+
+1
