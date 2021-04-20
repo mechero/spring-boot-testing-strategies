@@ -15,7 +15,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -48,11 +47,7 @@ public class SuperHeroControllerSpringBootTest {
         // then
         assertThat(superHeroResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(superHeroResponse.getBody().equals(new SuperHero("Rob", "Mannon", "RobotMan")));
-    }
-
-    @Test
-    public void letItFail() {
-        assertNotNull(null);
+        assertThat(false);
     }
 
     @Test
