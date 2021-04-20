@@ -1,5 +1,9 @@
 # Spring Boot Testing Strategies
 
+http://localhost:8080/superheros/{id}
+
+id in [1 - 4]
+
 ## Introduction
 
 This sample application made with Spring Boot is intended to show the different approach for testing, from Unit Tests with MockMVC in Standalone mode to full `@SpringBootTest` as Integration tests between the modules.
@@ -30,6 +34,3 @@ Finally, `SuperHeroControllerSpringBootTest` shows how to write a `@SpringBootTe
 ![@SpringBootTest using context and web server](images/tests_springboot_wm.png)
 
 To check conclusion and more information please visit [the blog](https://thepracticaldeveloper.com/2017/07/31/guide-spring-boot-controller-tests/).
-
-
-2
