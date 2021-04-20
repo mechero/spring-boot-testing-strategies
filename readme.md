@@ -32,4 +32,4 @@ Finally, `SuperHeroControllerSpringBootTest` shows how to write a `@SpringBootTe
 To check conclusion and more information please visit [the blog](https://thepracticaldeveloper.com/2017/07/31/guide-spring-boot-controller-tests/).
 
 
-1
+2
