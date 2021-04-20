@@ -47,6 +47,7 @@ public class SuperHeroControllerSpringBootTest {
         // then
         assertThat(superHeroResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(superHeroResponse.getBody().equals(new SuperHero("Rob", "Mannon", "RobotMan")));
+        assertThat(false);
     }
 
     @Test
