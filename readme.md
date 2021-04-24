@@ -4,6 +4,8 @@ http://localhost:8080/superheros/{id}
 
 id in [1 - 4]
 
+1
+
 ## Introduction
 
 This sample application made with Spring Boot is intended to show the different approach for testing, from Unit Tests with MockMVC in Standalone mode to full `@SpringBootTest` as Integration tests between the modules.
