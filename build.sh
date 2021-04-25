@@ -18,4 +18,6 @@ if [ "$PUSH_TO_ECR" == "true" ]; then
 	docker tag $TARGET_IMAGE_NAME:latest $TARGET_IMAGE_REG/$TARGET_IMAGE_NAME:latest
 	docker push $TARGET_IMAGE_REG/$TARGET_IMAGE_NAME:$TARGET_IMAGE_TAG
 	docker push $TARGET_IMAGE_REG/$TARGET_IMAGE_NAME:latest
+	
+	echo [{\"name\": \"$TARGET_IMAGE_NAME\", \"imageUri\": \"$TARGET_IMAGE_REG/$TARGET_IMAGE_NAME:$TARGET_IMAGE_TAG\"}] > imagedefinitions.json
 fi
