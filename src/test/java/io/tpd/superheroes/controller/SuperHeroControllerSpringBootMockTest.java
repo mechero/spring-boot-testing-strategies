@@ -4,7 +4,6 @@ import io.tpd.superheroes.domain.SuperHero;
 import io.tpd.superheroes.exceptions.NonExistingHeroException;
 import io.tpd.superheroes.repository.SuperHeroRepository;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.AutoConfigureJsonTesters;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -14,7 +13,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
@@ -30,7 +28,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  *
  * @author moises.macero
  */
-@ExtendWith(SpringExtension.class)
 @AutoConfigureJsonTesters
 @SpringBootTest
 @AutoConfigureMockMvc
