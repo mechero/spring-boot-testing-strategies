@@ -34,7 +34,7 @@ class SuperHeroRepositoryImpl implements SuperHeroRepository {
 
     @Override
     public Optional<SuperHero> getSuperHero(String heroName) {
-        return superHeroList.stream().filter(h -> h.getHeroName().equals(heroName)).findAny();
+        return superHeroList.stream().filter(h -> h.heroName().equals(heroName)).findAny();
     }
 
     @Override

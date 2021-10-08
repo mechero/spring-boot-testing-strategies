@@ -4,14 +4,12 @@ import io.tpd.superheroes.domain.SuperHero;
 import io.tpd.superheroes.exceptions.NonExistingHeroException;
 import io.tpd.superheroes.repository.SuperHeroRepository;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
 
@@ -21,11 +19,10 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 /**
  * This class demonstrates how to test a controller using Spring Boot Test
- * (what makes it much closer to a Integration Test)
+ * (what makes it much closer to an Integration Test)
  *
  * @author moises.macero
  */
-@ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class SuperHeroControllerSpringBootTest {
 
