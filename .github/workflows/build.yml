@@ -1,5 +1,8 @@
 name: PR build
-
+on:
+  push:
+    branches:
+      - master
 jobs:
   build-backend:
     runs-on: self-hosted
