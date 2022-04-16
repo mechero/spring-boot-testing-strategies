@@ -17,4 +17,4 @@ jobs:
           distribution: 'adopt'
       # Step that runs the tests
       - name: Run tests
-        run: mvn test
+        run: ./mvnw test
