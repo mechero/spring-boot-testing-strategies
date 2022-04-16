@@ -15,13 +15,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-      - name: Cache Gradle packages
-        uses: actions/cache@v1
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
       # Step that runs the tests
       - name: Run tests
         run: mvn test
