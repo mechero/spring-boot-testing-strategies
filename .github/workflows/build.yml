@@ -15,7 +15,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-      - name: Cache Gradle packages
+      - name: Cache Maven packages
         uses: actions/cache@v1
         with:
           path: ~/.m2/repository
