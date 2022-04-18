@@ -11,6 +11,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,7 +25,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
  * @author moises.macero
  */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class SuperHeroControllerSpringBootTest {
+class SuperHeroControllerSpringBootTest {
 
     @MockBean
     private SuperHeroRepository superHeroRepository;
@@ -33,7 +34,7 @@ public class SuperHeroControllerSpringBootTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void canRetrieveByIdWhenExists() {
+    void canRetrieveByIdWhenExists() {
         // given
         given(superHeroRepository.getSuperHero(2))
                 .willReturn(new SuperHero("Rob", "Mannon", "RobotMan"));
@@ -43,11 +44,11 @@ public class SuperHeroControllerSpringBootTest {
 
         // then
         assertThat(superHeroResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(superHeroResponse.getBody().equals(new SuperHero("Rob", "Mannon", "RobotMan")));
+        assertThat(Objects.equals(superHeroResponse.getBody(), new SuperHero("Rob", "Mannon", "RobotMan")));
     }
 
     @Test
-    public void canRetrieveByIdWhenDoesNotExist() {
+    void canRetrieveByIdWhenDoesNotExist() {
         // given
         given(superHeroRepository.getSuperHero(2))
                 .willThrow(new NonExistingHeroException());
@@ -61,7 +62,7 @@ public class SuperHeroControllerSpringBootTest {
     }
 
     @Test
-    public void canRetrieveByNameWhenExists() {
+    void canRetrieveByNameWhenExists() {
         // given
         given(superHeroRepository.getSuperHero("RobotMan"))
                 .willReturn(Optional.of(new SuperHero("Rob", "Mannon", "RobotMan")));
@@ -72,11 +73,11 @@ public class SuperHeroControllerSpringBootTest {
 
         // then
         assertThat(superHeroResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(superHeroResponse.getBody().equals(new SuperHero("Rob", "Mannon", "RobotMan")));
+        assertThat(Objects.equals(superHeroResponse.getBody(), new SuperHero("Rob", "Mannon", "RobotMan")));
     }
 
     @Test
-    public void canRetrieveByNameWhenDoesNotExist() {
+    void canRetrieveByNameWhenDoesNotExist() {
         // given
         given(superHeroRepository.getSuperHero("RobotMan"))
                 .willReturn(Optional.empty());
@@ -91,7 +92,7 @@ public class SuperHeroControllerSpringBootTest {
     }
 
     @Test
-    public void canCreateANewSuperHero() {
+    void canCreateANewSuperHero() {
         // when
         ResponseEntity<SuperHero> superHeroResponse = restTemplate.postForEntity("/superheroes/",
                 new SuperHero("Rob", "Mannon", "RobotMan"), SuperHero.class);
@@ -101,7 +102,7 @@ public class SuperHeroControllerSpringBootTest {
     }
 
     @Test
-    public void headerIsPresent() throws Exception {
+    void headerIsPresent() throws Exception {
         // when
         ResponseEntity<SuperHero> superHeroResponse = restTemplate.getForEntity("/superheroes/2", SuperHero.class);
 
