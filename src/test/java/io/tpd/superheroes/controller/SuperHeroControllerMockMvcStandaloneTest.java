@@ -44,7 +44,7 @@ public class SuperHeroControllerMockMvcStandaloneTest {
     private JacksonTester<SuperHero> jsonSuperHero;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         // We would need this line if we would not use the MockitoExtension
         // MockitoAnnotations.initMocks(this);
         // Here we can't use @AutoConfigureJsonTesters because there isn't a Spring context
@@ -57,7 +57,7 @@ public class SuperHeroControllerMockMvcStandaloneTest {
     }
 
     @Test
-    public void canRetrieveByIdWhenExists() throws Exception {
+    void canRetrieveByIdWhenExists() throws Exception {
         // given
         given(superHeroRepository.getSuperHero(2))
                 .willReturn(new SuperHero("Rob", "Mannon", "RobotMan"));
@@ -76,7 +76,7 @@ public class SuperHeroControllerMockMvcStandaloneTest {
     }
 
     @Test
-    public void canRetrieveByIdWhenDoesNotExist() throws Exception {
+    void canRetrieveByIdWhenDoesNotExist() throws Exception {
         // given
         given(superHeroRepository.getSuperHero(2))
                 .willThrow(new NonExistingHeroException());
@@ -93,7 +93,7 @@ public class SuperHeroControllerMockMvcStandaloneTest {
     }
 
     @Test
-    public void canRetrieveByNameWhenExists() throws Exception {
+    void canRetrieveByNameWhenExists() throws Exception {
         // given
         given(superHeroRepository.getSuperHero("RobotMan"))
                 .willReturn(Optional.of(new SuperHero("Rob", "Mannon", "RobotMan")));
@@ -112,7 +112,7 @@ public class SuperHeroControllerMockMvcStandaloneTest {
     }
 
     @Test
-    public void canRetrieveByNameWhenDoesNotExist() throws Exception {
+    void canRetrieveByNameWhenDoesNotExist() throws Exception {
         // given
         given(superHeroRepository.getSuperHero("RobotMan"))
                 .willReturn(Optional.empty());
@@ -129,7 +129,7 @@ public class SuperHeroControllerMockMvcStandaloneTest {
     }
 
     @Test
-    public void canCreateANewSuperHero() throws Exception {
+    void canCreateANewSuperHero() throws Exception {
         // when
         MockHttpServletResponse response = mvc.perform(
                 post("/superheroes/").contentType(MediaType.APPLICATION_JSON).content(
@@ -141,7 +141,7 @@ public class SuperHeroControllerMockMvcStandaloneTest {
     }
 
     @Test
-    public void headerIsPresent() throws Exception {
+    void headerIsPresent() throws Exception {
         // when
         MockHttpServletResponse response = mvc.perform(
                 get("/superheroes/2")

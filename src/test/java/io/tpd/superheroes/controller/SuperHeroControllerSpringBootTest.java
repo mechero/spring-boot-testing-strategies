@@ -33,7 +33,7 @@ public class SuperHeroControllerSpringBootTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void canRetrieveByIdWhenExists() {
+    void canRetrieveByIdWhenExists() {
         // given
         given(superHeroRepository.getSuperHero(2))
                 .willReturn(new SuperHero("Rob", "Mannon", "RobotMan"));
@@ -47,7 +47,7 @@ public class SuperHeroControllerSpringBootTest {
     }
 
     @Test
-    public void canRetrieveByIdWhenDoesNotExist() {
+    void canRetrieveByIdWhenDoesNotExist() {
         // given
         given(superHeroRepository.getSuperHero(2))
                 .willThrow(new NonExistingHeroException());
@@ -61,7 +61,7 @@ public class SuperHeroControllerSpringBootTest {
     }
 
     @Test
-    public void canRetrieveByNameWhenExists() {
+    void canRetrieveByNameWhenExists() {
         // given
         given(superHeroRepository.getSuperHero("RobotMan"))
                 .willReturn(Optional.of(new SuperHero("Rob", "Mannon", "RobotMan")));
@@ -76,7 +76,7 @@ public class SuperHeroControllerSpringBootTest {
     }
 
     @Test
-    public void canRetrieveByNameWhenDoesNotExist() {
+    void canRetrieveByNameWhenDoesNotExist() {
         // given
         given(superHeroRepository.getSuperHero("RobotMan"))
                 .willReturn(Optional.empty());
@@ -91,7 +91,7 @@ public class SuperHeroControllerSpringBootTest {
     }
 
     @Test
-    public void canCreateANewSuperHero() {
+    void canCreateANewSuperHero() {
         // when
         ResponseEntity<SuperHero> superHeroResponse = restTemplate.postForEntity("/superheroes/",
                 new SuperHero("Rob", "Mannon", "RobotMan"), SuperHero.class);
@@ -101,7 +101,7 @@ public class SuperHeroControllerSpringBootTest {
     }
 
     @Test
-    public void headerIsPresent() throws Exception {
+    void headerIsPresent() throws Exception {
         // when
         ResponseEntity<SuperHero> superHeroResponse = restTemplate.getForEntity("/superheroes/2", SuperHero.class);
 
