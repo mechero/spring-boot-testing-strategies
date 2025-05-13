@@ -44,7 +44,7 @@ public class SuperHeroControllerSpringBootMockTest {
     private JacksonTester<SuperHero> jsonSuperHero;
 
     @Test
-    void canRetrieveByIdWhenExists() throws Exception {
+    public void canRetrieveByIdWhenExists() throws Exception {
         // given
         given(superHeroRepository.getSuperHero(2))
                 .willReturn(new SuperHero("Rob", "Mannon", "RobotMan"));
@@ -63,7 +63,7 @@ public class SuperHeroControllerSpringBootMockTest {
     }
 
     @Test
-    void canRetrieveByIdWhenDoesNotExist() throws Exception {
+    public void canRetrieveByIdWhenDoesNotExist() throws Exception {
         // given
         given(superHeroRepository.getSuperHero(2))
                 .willThrow(new NonExistingHeroException());
@@ -80,7 +80,7 @@ public class SuperHeroControllerSpringBootMockTest {
     }
 
     @Test
-    void canRetrieveByNameWhenExists() throws Exception {
+    public void canRetrieveByNameWhenExists() throws Exception {
         // given
         given(superHeroRepository.getSuperHero("RobotMan"))
                 .willReturn(Optional.of(new SuperHero("Rob", "Mannon", "RobotMan")));
@@ -99,7 +99,7 @@ public class SuperHeroControllerSpringBootMockTest {
     }
 
     @Test
-    void canRetrieveByNameWhenDoesNotExist() throws Exception {
+    public void canRetrieveByNameWhenDoesNotExist() throws Exception {
         // given
         given(superHeroRepository.getSuperHero("RobotMan"))
                 .willReturn(Optional.empty());
@@ -116,7 +116,7 @@ public class SuperHeroControllerSpringBootMockTest {
     }
 
     @Test
-    void canCreateANewSuperHero() throws Exception {
+    public void canCreateANewSuperHero() throws Exception {
         // when
         MockHttpServletResponse response = mvc.perform(
                 post("/superheroes/").contentType(MediaType.APPLICATION_JSON).content(
@@ -128,7 +128,7 @@ public class SuperHeroControllerSpringBootMockTest {
     }
 
     @Test
-    void headerIsPresent() throws Exception {
+    public void headerIsPresent() throws Exception {
         // when
         MockHttpServletResponse response = mvc.perform(
                 get("/superheroes/2")
