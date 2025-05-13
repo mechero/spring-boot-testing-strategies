@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.AutoConfigureJsonTesters;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.json.JacksonTester;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
@@ -33,7 +33,7 @@ public class SuperHeroControllerMockMvcWithContextTest {
     @Autowired
     private MockMvc mvc;
 
-    @MockBean
+    @MockitoBean
     private SuperHeroRepository superHeroRepository;
 
     // This object will be initialized thanks to @AutoConfigureJsonTesters
@@ -84,7 +84,7 @@ public class SuperHeroControllerMockMvcWithContextTest {
 
         // when
         MockHttpServletResponse response = mvc.perform(
-                get("/superheroes/?name=RobotMan")
+                get("/superheroes?name=RobotMan")
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
 
@@ -103,7 +103,7 @@ public class SuperHeroControllerMockMvcWithContextTest {
 
         // when
         MockHttpServletResponse response = mvc.perform(
-                get("/superheroes/?name=RobotMan")
+                get("/superheroes?name=RobotMan")
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
 
@@ -116,7 +116,7 @@ public class SuperHeroControllerMockMvcWithContextTest {
     public void canCreateANewSuperHero() throws Exception {
         // when
         MockHttpServletResponse response = mvc.perform(
-                post("/superheroes/").contentType(MediaType.APPLICATION_JSON).content(
+                post("/superheroes").contentType(MediaType.APPLICATION_JSON).content(
                         jsonSuperHero.write(new SuperHero("Rob", "Mannon", "RobotMan")).getJson()
                 )).andReturn().getResponse();
 

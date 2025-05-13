@@ -30,3 +30,12 @@ Finally, `SuperHeroControllerSpringBootTest` shows how to write a `@SpringBootTe
 ![@SpringBootTest using context and web server](images/tests_springboot_wm.png)
 
 To check conclusion and more information please visit [the blog](https://thepracticaldeveloper.com/guide-spring-boot-controller-tests/).
+
+## Changelog
+
+### 2025/05 Update: Spring Boot 3.4.5 and JDK 24
+
+* The trailing slash in some tests makes them fail. See [this blog post](https://www.lucasjosino.com/blog/spring-boot-using-the-new-filter-for-trailing-slash-handling/)
+  * Trailing slashes are now removed since they were irrelevant for this blog post
+* Moved from `javax.` packages to `jakarta.` where needed
+* Replaced `MockBean`'s deprecated annotation by its new version `MockitoBean`
