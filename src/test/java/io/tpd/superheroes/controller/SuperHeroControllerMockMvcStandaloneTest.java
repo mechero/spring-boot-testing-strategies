@@ -100,7 +100,7 @@ public class SuperHeroControllerMockMvcStandaloneTest {
 
         // when
         MockHttpServletResponse response = mvc.perform(
-                get("/superheroes/?name=RobotMan")
+                get("/superheroes?name=RobotMan")
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
 
@@ -119,7 +119,7 @@ public class SuperHeroControllerMockMvcStandaloneTest {
 
         // when
         MockHttpServletResponse response = mvc.perform(
-                get("/superheroes/?name=RobotMan")
+                get("/superheroes?name=RobotMan")
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
 
@@ -132,7 +132,7 @@ public class SuperHeroControllerMockMvcStandaloneTest {
     public void canCreateANewSuperHero() throws Exception {
         // when
         MockHttpServletResponse response = mvc.perform(
-                post("/superheroes/").contentType(MediaType.APPLICATION_JSON).content(
+                post("/superheroes").contentType(MediaType.APPLICATION_JSON).content(
                         jsonSuperHero.write(new SuperHero("Rob", "Mannon", "RobotMan")).getJson()
                 )).andReturn().getResponse();
 

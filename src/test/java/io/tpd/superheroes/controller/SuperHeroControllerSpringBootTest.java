@@ -6,10 +6,10 @@ import io.tpd.superheroes.repository.SuperHeroRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.util.Optional;
 
@@ -26,7 +26,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class SuperHeroControllerSpringBootTest {
 
-    @MockBean
+    @MockitoBean
     private SuperHeroRepository superHeroRepository;
 
     @Autowired
@@ -68,11 +68,11 @@ public class SuperHeroControllerSpringBootTest {
 
         // when
         ResponseEntity<SuperHero> superHeroResponse = restTemplate
-                .getForEntity("/superheroes/?name=RobotMan", SuperHero.class);
+                .getForEntity("/superheroes?name=RobotMan", SuperHero.class);
 
         // then
         assertThat(superHeroResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(superHeroResponse.getBody().equals(new SuperHero("Rob", "Mannon", "RobotMan")));
+        assertThat(superHeroResponse.getBody()).isEqualTo(new SuperHero("Rob", "Mannon", "RobotMan"));
     }
 
     @Test
@@ -83,7 +83,7 @@ public class SuperHeroControllerSpringBootTest {
 
         // when
         ResponseEntity<SuperHero> superHeroResponse = restTemplate
-                .getForEntity("/superheroes/?name=RobotMan", SuperHero.class);
+                .getForEntity("/superheroes?name=RobotMan", SuperHero.class);
 
         // then
         assertThat(superHeroResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -93,7 +93,7 @@ public class SuperHeroControllerSpringBootTest {
     @Test
     public void canCreateANewSuperHero() {
         // when
-        ResponseEntity<SuperHero> superHeroResponse = restTemplate.postForEntity("/superheroes/",
+        ResponseEntity<SuperHero> superHeroResponse = restTemplate.postForEntity("/superheroes",
                 new SuperHero("Rob", "Mannon", "RobotMan"), SuperHero.class);
 
         // then
